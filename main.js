@@ -25,6 +25,16 @@ const FULL_COURSES = {
     '2432': 'Bethpage Red Course',
     '2435': 'Bethpage Yellow Course',
 };
+const FULL_COURSES_SHORT_NAME = {
+  '2431': 'Black',
+  // '2517': 'Bethpage 9 Holes Midday Blue or Yellow Course',
+  '2433': 'Blue',
+  // '2539': 'Bethpage Early AM 9 Holes Blue',
+  // '2538': 'Bethpage Early AM 9 Holes Yellow',
+  '2434': 'Green',
+  '2432': 'Red',
+  '2435': 'Yellow',
+};
 
 let allTeeTimes = [];
 let newTeeTimes = [];
@@ -64,12 +74,19 @@ let transporter = nodemailer.createTransport({
 
 // Generate date array
 let dates = [...Array(7).keys()];
+let formattedDates = {};
 let millisecondsInADay = 1000 * 3600 * 24;
+
 dates = dates.map(index => {
   let date = new Date(Date.now() + millisecondsInADay * index);
   let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
-  let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date );
-  return `${month}-${day}-${year }`;
+  let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date);
+  let dateString = `${month}-${day}-${year}`;
+  
+  let formattedDate = date.toLocaleDateString("en-US", { weekday: 'short', month: 'short', day: 'numeric' });
+  formattedDates[dateString] = formattedDate;
+
+  return dateString;
 });
 
 // Scrape site
@@ -142,7 +159,8 @@ dates = dates.map(index => {
                   let time = teeTimesArray[3 * i];
                   let holes = teeTimesArray[3 * i + 1];
                   let players = teeTimesArray[3 * i + 2];
-                  let id = [FULL_COURSES[course], date.toString(), time, holes.toString(), players.toString()].join(' - ');
+                  let formattedDate = formattedDates[date]
+                  let id = [FULL_COURSES_SHORT_NAME[course], formattedDate, time, holes.toString() + ' holes', players.toString() + ' players'].join(' | ');
 
                   let teeTime = {
                     _id: id,
@@ -153,7 +171,9 @@ dates = dates.map(index => {
                     players: players,
                   }
 
-                  newTeeTimes.push(teeTime);
+                  if (players >= 3) {
+                    newTeeTimes.push(teeTime);
+                  }
 
                   if (allTeeTimes.some(element => element._id === teeTime._id)) {
                     // console.log('Repeated')
