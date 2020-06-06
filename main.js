@@ -35,6 +35,13 @@ const FULL_COURSES_SHORT_NAME = {
   '2432': 'Red',
   '2435': 'Yellow',
 };
+const COURSES_SHORT_NAME_BY_FULL_NAME = {
+  'Bethpage Black Course': 'Black',
+  'Bethpage Blue Course': 'Blue',
+  'Bethpage Green Course': 'Green',
+  'Bethpage Red Course': 'Red',
+  'Bethpage Yellow Course': 'Yellow',
+}
 
 let allTeeTimes = [];
 let newTeeTimes = [];
@@ -53,10 +60,6 @@ mongoose
       allTeeTimes = await TeeTime.find()
     })();
 
-      // .then(res => console.log(res))
-      // .catch(err => console.log(err))
-    // Before adding any documents to the database, let's delete all previous entries
-    // return self.connection.dropDatabase();
 
   })
   .catch(error => {
@@ -208,7 +211,7 @@ dates = dates.map(index => {
     
     if (newTeeTimes.length > 0) {
       newTeeTimes.forEach(teeTime => {
-        emailHtml += `<li>${teeTime._id}</li>`
+        emailHtml += `<li style="color:${COURSES_SHORT_NAME_BY_FULL_NAME[teeTime.course].toLowerCase()};">${teeTime._id}</li>`
       })
       
       emailHtml += '</ul>'
@@ -233,4 +236,5 @@ dates = dates.map(index => {
   }
 
 })();
+
 
