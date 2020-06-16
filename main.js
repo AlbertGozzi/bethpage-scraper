@@ -218,7 +218,7 @@ dates = dates.map(index => {
       
       const mailOptions = {
         from: process.env.EMAIL_USERNAME,
-        to: ['albertgozzi@gmail.com', 'jblaquier@udesa.edu.ar', 'santisarquis@gmail.com', 'asblaquier@gmail.com'], // list of receivers
+        to: ['albertgozzi@gmail.com', 'jblaquier@udesa.edu.ar', 'santisarquis@gmail.com', 'asblaquier@gmail.com', 'burza1964@gmail.com'], // list of receivers
         subject: 'Bethpage Scraper | New Tee Times', // Subject line
         html: emailHtml,
       };
