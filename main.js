@@ -131,9 +131,9 @@ dates = dates.map(index => {
         await page.select('#nav #schedule_select', course)
 
         // console.log(`${Math.floor((Date.now() - timeStart)/1000)}s | Selecting 'Resident'`)
-        await page.waitForSelector('div > .row > #content > .booking-classes > .btn:nth-child(2)')
-        await page.click('div > .row > #content > .booking-classes > .btn:nth-child(2)')
-        await new Promise(r => setTimeout(r, 1000));
+        // await page.waitForSelector('div > .row > #content > .booking-classes > .btn:nth-child(2)')
+        // await page.click('div > .row > #content > .booking-classes > .btn:nth-child(2)')
+        // await new Promise(r => setTimeout(r, 1000));
     
         // console.log(`${Math.floor((Date.now() - timeStart)/1000)}s | Preparing to iterate through dates`)
         await page.setViewport({ width: 985, height: 937 })
