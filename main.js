@@ -160,6 +160,7 @@ dates = dates.map(index => {
                 let numTeeTimes = teeTimesArray.length / 3;
                 for (let i = 0; i < numTeeTimes; i++) {
                   let time = teeTimesArray[3 * i];
+                  let hour = time[0];
                   let holes = teeTimesArray[3 * i + 1];
                   let players = teeTimesArray[3 * i + 2];
                   let formattedDate = formattedDates[date]
@@ -174,7 +175,7 @@ dates = dates.map(index => {
                     players: players,
                   }
 
-                  if (players >= 3) {
+                  if (players >= 3 && (hour <= 4 || hour >= 7) ) {
                     newTeeTimes.push(teeTime);
                   }
 
