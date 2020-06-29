@@ -174,7 +174,7 @@ dates = dates.map(index => {
                     players: players,
                   }
 
-                  if (players >= 2) {
+                  if (players >= 3) {
                     newTeeTimes.push(teeTime);
                   }
 
