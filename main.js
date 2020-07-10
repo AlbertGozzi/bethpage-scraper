@@ -76,12 +76,12 @@ let transporter = nodemailer.createTransport({
 });
 
 // Generate date array
-let dates = [...Array(7).keys()];
+let dates = [...Array(6).keys()]; // TODO: change to 7
 let formattedDates = {};
 let millisecondsInADay = 1000 * 3600 * 24;
 
 dates = dates.map(index => {
-  let date = new Date(Date.now() + millisecondsInADay * index);
+  let date = new Date(Date.now() + millisecondsInADay * (index + 1)); // TODO: remove 1
   let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
   let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date);
   let dateString = `${month}-${day}-${year}`;
