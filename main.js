@@ -18,12 +18,12 @@ const ALL_COURSES = {
 const FULL_COURSES = {
     '2431': 'Bethpage Black Course',
     // '2517': 'Bethpage 9 Holes Midday Blue or Yellow Course',
-    // '2433': 'Bethpage Blue Course',
+    '2433': 'Bethpage Blue Course',
     // '2539': 'Bethpage Early AM 9 Holes Blue',
     // '2538': 'Bethpage Early AM 9 Holes Yellow',
-    // '2434': 'Bethpage Green Course',
-    // '2432': 'Bethpage Red Course',
-    // '2435': 'Bethpage Yellow Course',
+    '2434': 'Bethpage Green Course',
+    '2432': 'Bethpage Red Course',
+    '2435': 'Bethpage Yellow Course',
 };
 const FULL_COURSES_SHORT_NAME = {
   '2431': 'Black',
