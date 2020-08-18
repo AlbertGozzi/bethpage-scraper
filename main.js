@@ -164,7 +164,7 @@ dates = dates.map(index => {
                   let holes = teeTimesArray[3 * i + 1];
                   let players = teeTimesArray[3 * i + 2];
                   let formattedDate = formattedDates[date]
-                  let dayOfWeek = date.getDay();
+                  // let dayOfWeek = date.getDay();
                   let id = [FULL_COURSES_SHORT_NAME[course], formattedDate, time, holes.toString() + ' holes', players.toString() + ' players'].join(' | ');
 
                   let teeTime = {
@@ -174,7 +174,7 @@ dates = dates.map(index => {
                     time: time,
                     holes: holes,
                     players: players,
-                    dayOfWeek: dayOfWeek,
+                    // dayOfWeek: dayOfWeek,
                   }
 
                   if (players >= 3 && (hour <= 4 || hour >= 7) ) {
