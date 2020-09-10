@@ -76,12 +76,12 @@ let transporter = nodemailer.createTransport({
 });
 
 // Generate date array
-let dates = [...Array(7).keys()]; 
+let dates = [...Array(6).keys()]; 
 let formattedDates = {};
 let millisecondsInADay = 1000 * 3600 * 24;
 
 dates = dates.map(index => {
-  let date = new Date(Date.now() + millisecondsInADay * index); 
+  let date = new Date(Date.now() + millisecondsInADay * (index + 1)); 
   let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
   let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date);
   let dateString = `${month}-${day}-${year}`;
@@ -177,7 +177,7 @@ dates = dates.map(index => {
                     // dayOfWeek: dayOfWeek,
                   }
 
-                  if (players >= 2 && (hour <= 2 || hour >= 7) ) {
+                  if (players >= 4 && (hour <= 2 || hour >= 7) ) {
                     newTeeTimes.push(teeTime);
                     console.log(teeTime)
                   }
