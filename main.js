@@ -177,7 +177,7 @@ dates = dates.map(index => {
                     // dayOfWeek: dayOfWeek,
                   }
 
-                  if (players >= 4 && (hour <= 2 || hour >= 7) ) {
+                  if (players >= 3 && (hour <= 2 || hour >= 7) ) {
                     newTeeTimes.push(teeTime);
                     console.log(teeTime)
                   }
